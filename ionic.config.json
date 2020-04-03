@@ -1,0 +1,7 @@
+{
+  "name": "ionic5app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
