@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IBackendService } from './backend.interface';
 import { ApiService } from './api.service';
 import { Endpoints } from './endpoints';
-import { GamesResponse } from 'src/app/api-contracts/game';
+import { GamesResponse, GamesRequestParams } from 'src/app/api-contracts/games';
 import { map } from 'rxjs/operators';
 
 @Injectable({
@@ -14,8 +14,8 @@ export class BackendService implements IBackendService {
     private api: ApiService,
   ) { }
 
-  async getGames() {
-    return (await this.api.get<GamesResponse>(Endpoints.games())).pipe(
+  async getGames(params: GamesRequestParams) {
+    return (await this.api.get<GamesRequestParams, GamesResponse>(Endpoints.games(), params)).pipe(
       map(httpResponse => httpResponse.body)
     )
   }

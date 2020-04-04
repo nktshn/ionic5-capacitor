@@ -1,6 +1,6 @@
-import { GamesResponse } from 'src/app/api-contracts/game';
+import { GamesResponse, GamesRequestParams } from 'src/app/api-contracts/games';
 import { Observable } from 'rxjs';
 
 export interface IBackendService {
-    getGames(): Promise<Observable<GamesResponse>>
+    getGames(params: GamesRequestParams): Promise<Observable<GamesResponse>>
 }
