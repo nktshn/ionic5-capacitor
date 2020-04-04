@@ -14,7 +14,7 @@ export class BackendService implements IBackendService {
     private api: ApiService,
   ) { }
 
-  async getGames(params: GamesRequestParams) {
+  async getGames(params?: GamesRequestParams) {
     return (await this.api.get<GamesRequestParams, GamesResponse>(Endpoints.games(), params)).pipe(
       map(httpResponse => httpResponse.body)
     )

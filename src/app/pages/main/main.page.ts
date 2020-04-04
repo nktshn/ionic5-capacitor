@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BackendService } from 'src/app/services/api/backend.service';
 
 @Component({
   selector: 'app-main',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private backend: BackendService,
+  ) { }
 
   ngOnInit() {
+    this.loadStoreGames();
+  }
+
+  private async loadStoreGames() {
+    const sub = await this.backend.getGames();
+    sub.subscribe(gamesRes => {
+      console.log(gamesRes);
+    })
   }
 
 }

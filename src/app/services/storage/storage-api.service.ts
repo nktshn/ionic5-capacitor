@@ -9,7 +9,7 @@ const { Storage } = Plugins;
 export class StorageApiService {
 
   constructor(
-    private storage: Storage,
+
   ) { }
 
   async set(key: string, value: any) {
