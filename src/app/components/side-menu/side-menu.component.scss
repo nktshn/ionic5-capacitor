@@ -1,0 +1,12 @@
+@import './../../../global-mixins.scss';
+
+.menu-list ion-icon {
+    margin-right: 13px;
+}
+
+.menu-list ion-item {
+    @include transition();
+    &:hover {
+        filter: brightness(0.95);
+    }
+}
