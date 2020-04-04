@@ -17,14 +17,12 @@ export class BackendMockService implements IBackendService {
   ) { }
 
   async getGames(params?: GamesRequestParams) {
-    const mockedResponse = (gamesMockResponse as any).default;
     let response = await this.storage.getStoreGames();
     return new Observable<GamesResponse>(obs => {
       if (!response) {
         // obs.error('no games record in storage');
+        const mockedResponse = (gamesMockResponse as any).default;
         this.storage.setStoreGames(mockedResponse);
-        console.log(mockedResponse);
-        
         response = mockedResponse;
       }
       obs.next(response);
