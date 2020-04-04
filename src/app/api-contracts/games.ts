@@ -11,8 +11,9 @@ export interface Game {
     price: number;
     distributor: string;
     rating: number;
+    releaseDate: number; // unix timestamp
 }
 
 export interface GamesRequestParams {
-    
+
 }

@@ -19,7 +19,7 @@ import { BackendMockService } from './services/api/backend-mock.service';
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    { provide: BackendService, useClass: BackendMockService }
+    { provide: BackendService, useClass: BackendMockService },
   ],
   bootstrap: [AppComponent]
 })

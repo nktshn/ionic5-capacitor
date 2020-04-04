@@ -1,0 +1,15 @@
+{
+    "games": [
+        {
+            "gameId": 0,
+            "title": "Half Life 3",
+            "description": "Did you not believe in Valve? But in happened! Half Life 3 has been oficially released!",
+            "coverUrl": "https://goldenguidewow.com/wp-content/uploads/2019/04/Half-Life-3-logo-672x372.jpg",
+            "price": 25,
+            "distributor": "Valve",
+            "rating": 10,
+            "releaseDate": 2367014400
+        }
+    ],
+    "amount": 1
+}
