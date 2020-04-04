@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "ionic5app",
+  "appName": "Future Game Store",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
