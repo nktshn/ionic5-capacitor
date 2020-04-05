@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { SideMenuService } from './side-menu.service';
 import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { DeviceService } from 'src/app/services/device/device.service';
+
 
 @Component({
   selector: 'app-side-menu',
@@ -11,6 +13,7 @@ import { ProfileResponse } from 'src/app/api-contracts/profile';
 export class SideMenuComponent implements OnInit {
 
   readonly menuId = 'main';
+  appVersion: string;
   
   @Input() profile: ProfileResponse;
 
@@ -21,15 +24,26 @@ export class SideMenuComponent implements OnInit {
   constructor(
     private router: Router,
     private sideMenuService: SideMenuService,
+    private deviceService:  DeviceService,
   ) { }
 
   ngOnInit() {
-
+    this.getAppVersion();
   }
 
   navigateTo(link: string): void {
     this.router.navigateByUrl(link);
     this.sideMenuService.close(this.menuId);
+  }
+
+  async getAppVersion(): Promise<void> {
+    const deviceInfo = await this.deviceService.getAppInfo();
+    const isWeb = deviceInfo.platform === 'web';
+    if (isWeb) {
+      this.appVersion = `Web version`;
+      return;
+    }
+    this.appVersion = `Version ${deviceInfo.appVersion} build ${deviceInfo.appBuild}`
   }
 
 }

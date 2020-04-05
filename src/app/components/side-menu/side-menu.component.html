@@ -9,17 +9,22 @@
         </div>
         <div class="balance">
           <span>Your balance: </span>
-          <strong>{{profile.balance}}</strong>
+          <strong>{{profile.balance}}$</strong>
         </div>
       </div>
     </div>
   </ion-header>
-  <ion-content>
+  <ion-content class="menu-content">
     <ion-list class="menu-list">
       <ion-item *ngFor="let item of menuItems" (click)="navigateTo(item.link)">
         <ion-icon [name]="item.ionIconName"></ion-icon>
         {{item.title}}
       </ion-item>
     </ion-list>
+    <div class="menu-subcontent">
+      <div class="version">
+        <span>{{appVersion}}</span>
+      </div>
+    </div>
   </ion-content>
 </ion-menu>
