@@ -3,13 +3,33 @@
         {
             "gameId": 0,
             "title": "Half Life 3",
-            "description": "Did you not believe in Valve? But in happened! Half Life 3 has been oficially released!",
+            "description": "Did you not believe in Valve? But it happened! Half Life 3 has been officially released!",
             "coverUrl": "https://goldenguidewow.com/wp-content/uploads/2019/04/Half-Life-3-logo-672x372.jpg",
             "price": 25,
             "distributor": "Valve",
             "rating": 10,
             "releaseDate": 2367014400
+        },
+        {
+            "gameId": 0,
+            "title": "Minecraft 3",
+            "description": "Yes, we're still digging caves. Aren't you?",
+            "coverUrl": "https://i.ytimg.com/vi/Dg0IjOzopYU/maxresdefault.jpg",
+            "price": 150,
+            "distributor": "Mojang",
+            "rating": 5,
+            "releaseDate": 2367017400
+        },
+        {
+            "gameId": 0,
+            "title": "Grand Theft Auto 6",
+            "description": "Play for 6 different characters in sunny LA! However, again as you used to.",
+            "coverUrl": "https://i.playground.ru/p/0EIcJnHt1mwun_AUjCn4uA.jpeg",
+            "price": 25,
+            "distributor": "Rockstar",
+            "rating": 8,
+            "releaseDate": 2367024400
         }
     ],
-    "amount": 1
+    "amount": 3
 }

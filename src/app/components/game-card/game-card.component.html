@@ -1,0 +1,22 @@
+<ion-card *ngIf="game">
+  <ion-item>
+    <!-- <ion-icon name="heart-outline"></ion-icon> -->
+    <ion-label>{{game.title}}</ion-label>
+
+    <ion-button fill="outline" slot="end">{{getBuyButtonText()}}</ion-button>
+  </ion-item>
+
+  <ion-card-content>
+    <img [src]="game.coverUrl" alt="">
+    <div class="desc">{{game.description}}</div>
+    <div class="game-data">
+      <div class="left">
+        <span>Distributor: {{game.distributor}}</span>
+        <span>Release date: {{game.releaseDate}}</span>
+      </div>
+      <div class="right">
+        <span>Community rating: {{game.rating}}/10</span>
+      </div>
+    </div>
+  </ion-card-content>
+</ion-card>

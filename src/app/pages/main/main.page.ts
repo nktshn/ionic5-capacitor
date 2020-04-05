@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { BackendService } from 'src/app/services/api/backend.service';
+import { GamesService } from 'src/app/stores/games.service';
+import { Game } from 'src/app/api-contracts/games';
+import { skipWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-main',
@@ -8,19 +10,22 @@ import { BackendService } from 'src/app/services/api/backend.service';
 })
 export class MainPage implements OnInit {
 
+  storeGames: Game[] = [];
+
   constructor(
-    private backend: BackendService,
+    private gamesService: GamesService,
   ) { }
 
   ngOnInit() {
-    this.loadStoreGames();
+    this.gamesService.retrieveStoreGames();
+    this.gamesService.games.pipe(
+      skipWhile(games => !games)
+    ).subscribe(games => {
+      this.storeGames = games;
+    });
   }
 
-  private async loadStoreGames() {
-    const sub = await this.backend.getGames();
-    sub.subscribe(gamesRes => {
-      console.log(gamesRes);
-    })
+  ngOnDestroy() {
   }
 
-}
+ }

@@ -8,8 +8,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content  id="main">
-    <ion-row>
-      
-    </ion-row>
+<ion-content id="main">
+  <div class="grid">
+    <app-game-card *ngFor="let game of storeGames" [game]="game"></app-game-card>
+  </div>
 </ion-content>
