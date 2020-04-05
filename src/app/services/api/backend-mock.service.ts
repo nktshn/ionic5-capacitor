@@ -37,7 +37,7 @@ export class BackendMockService implements IBackendService {
   async signup(profile: CreateProfileRequest) {
     return new Observable<AuthData>(obs => {
       const profileResponse: ProfileResponse = (profileMockResponse as any).default;
-      profileResponse.nickname = profile.nickname;
+      profileResponse.username = profile.username;
       this.storage.setProfile(profileResponse);
       const authData: AuthData = {
         token: 'randomtoken'

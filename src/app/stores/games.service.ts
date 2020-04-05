@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class GamesService {
 
-  games = new BehaviorSubject<Game[]>([]);
+  readonly games = new BehaviorSubject<Game[]>(null);
   
   constructor(
     private backend: BackendService,

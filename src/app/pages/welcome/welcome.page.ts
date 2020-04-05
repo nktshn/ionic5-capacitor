@@ -16,7 +16,7 @@ import { NavController } from '@ionic/angular';
 export class WelcomePage implements OnInit {
 
   disabled = false;
-  nicknameForm: FormGroup;
+  usernameForm: FormGroup;
 
   constructor(
     private backend: BackendService,
@@ -25,16 +25,16 @@ export class WelcomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initNicknameForm();
+    this.initUsernameorm();
   }
 
-  async onNicknameFormSubmit() {
-    if (this.nicknameForm.invalid) {
+  async onUsernameFormSubmit() {
+    if (this.usernameForm.invalid) {
       return;
     }
     this.disabled = true;
     const profile: CreateProfileRequest = {
-      nickname: this.nicknameForm.get('nickname').value,
+      username: this.usernameForm.get('username').value,
     };
     const signupSub = (await this.backend.signup(profile));
     signupSub.subscribe(authData => {
@@ -43,10 +43,10 @@ export class WelcomePage implements OnInit {
     })
   }
 
-  private initNicknameForm(): void {
-    this.nicknameForm = new FormBuilder().group({
-      nickname: ['', Validators.compose(
-        [Validators.required, Validators.minLength(4), Validators.maxLength(64), Validators.pattern(ValidationPatterns.NICKNAME)])],
+  private initUsernameorm(): void {
+    this.usernameForm = new FormBuilder().group({
+      username: ['', Validators.compose(
+        [Validators.required, Validators.minLength(4), Validators.maxLength(16), Validators.pattern(ValidationPatterns.USERNAME)])],
     })
   }
 

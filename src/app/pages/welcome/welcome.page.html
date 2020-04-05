@@ -1,18 +1,18 @@
 <ion-content>
-  <form class="wrap" [formGroup]="nicknameForm" (ngSubmit)="onNicknameFormSubmit()">
+  <form class="wrap" [formGroup]="usernameForm" (ngSubmit)="onUsernameFormSubmit()">
     <div class="content">
       <h3>Welcome to the Future Game Store!</h3>
       <h5 class="secondary-text">Let us know how we can call you, stranger</h5>
       <ion-item class="form-item">
-        <ion-label position="floating">Nickname</ion-label>
-        <ion-input formControlName="nickname" type="text" placeholder="Enter your nickname"></ion-input>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input formControlName="username" type="text" placeholder="Enter your username"></ion-input>
       </ion-item>
-      <ion-text *ngIf="nicknameForm.invalid && nicknameForm.touched" class="hint" color="warning">
-        <span>4 to 64 symbols, containing digits, numbers, underscores, dashes, dots only</span>
+      <ion-text *ngIf="usernameForm.invalid && usernameForm.touched" class="hint" color="warning">
+        <span>4 to 16 symbols, containing digits, numbers, underscores, dashes, dots only</span>
       </ion-text>
     </div>
     <div class="bottom-content">
-      <ion-button [disabled]="disabled || nicknameForm.invalid" type="submit" color="primary">Land me to the market!</ion-button>
+      <ion-button [disabled]="disabled || usernameForm.invalid" type="submit" color="primary">Land me to the market!</ion-button>
     </div>
   </form>
 </ion-content>

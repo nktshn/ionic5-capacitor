@@ -7,29 +7,39 @@
             "coverUrl": "https://goldenguidewow.com/wp-content/uploads/2019/04/Half-Life-3-logo-672x372.jpg",
             "price": 25,
             "distributor": "Wealth",
-            "rating": 10,
+            "rating": 9.6,
             "releaseDate": 2367014400000
         },
         {
-            "gameId": 0,
+            "gameId": 1,
             "title": "Minecraft 3",
             "description": "Yes, we're still digging caves. Aren't you?",
             "coverUrl": "https://i.ytimg.com/vi/Dg0IjOzopYU/maxresdefault.jpg",
             "price": 150,
             "distributor": "Morejan",
-            "rating": 5,
+            "rating": 5.4,
             "releaseDate": 2367017400000
         },
         {
-            "gameId": 0,
+            "gameId": 2,
             "title": "Grand Theft Auto 6",
             "description": "Play for 6 different characters in sunny LA! However, again as you used to.",
             "coverUrl": "https://i.playground.ru/p/0EIcJnHt1mwun_AUjCn4uA.jpeg",
             "price": 25,
             "distributor": "Popstar Games",
-            "rating": 8,
+            "rating": 8.2,
             "releaseDate": 2367024400000
+        },
+        {
+            "gameId": 3,
+            "title": "Dota 3",
+            "description": "Same map, 32 new heroes, 1789 new items, no balance. ",
+            "coverUrl": "https://i.ytimg.com/vi/RElTXYx35i8/maxresdefault.jpg",
+            "price": 0,
+            "distributor": "Wealth",
+            "rating": 2.9,
+            "releaseDate": 2367054400000
         }
     ],
-    "amount": 3
+    "amount": 4
 }

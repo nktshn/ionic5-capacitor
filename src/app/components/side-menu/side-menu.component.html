@@ -1,8 +1,18 @@
 <ion-menu side="end" menuId="{{menuId}}" contentId="main">
   <ion-header>
-    <!-- <ion-row>
-      () Name
-    </ion-row> -->
+    <div *ngIf="profile" class="header-wrap">
+      <ion-icon class="avatar" name="person-circle-outline"></ion-icon>
+      <div class="profile-data">
+        <div class="username-wrap">
+          <span>Welcome, </span>
+          <strong class="username" strong>{{profile.username}}</strong>
+        </div>
+        <div class="balance">
+          <span>Your balance: </span>
+          <strong>{{profile.balance}}</strong>
+        </div>
+      </div>
+    </div>
   </ion-header>
   <ion-content>
     <ion-list class="menu-list">
