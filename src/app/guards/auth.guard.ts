@@ -19,8 +19,8 @@ export class AuthGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     return new Promise(async (resolve, reject) => {
-      resolve(true)
-      return;
+      // resolve(true)
+      // return;
       const authData = await this.authService.getAuthData();
       if (authData) {
         resolve(true)

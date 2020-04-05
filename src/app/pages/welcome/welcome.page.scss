@@ -1,0 +1,27 @@
+.wrap {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 20px 20px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    text-align: center;
+}
+
+.bottom-content, .bottom-content ion-button {
+    width: 100%;
+}
+
+.secondary-text {
+    margin-bottom: 30px;
+}
+
+.form-item {
+    margin-bottom: 8px;
+}
