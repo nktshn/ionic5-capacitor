@@ -1,4 +1,5 @@
 export const RoutingPaths = {
     main: 'main',
-    profile: 'profile'
+    profile: 'profile',
+    welcome: 'welcome'
 }
