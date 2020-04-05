@@ -15,7 +15,8 @@
         <span>Release date: {{game.releaseDate}}</span>
       </div>
       <div class="right">
-        <span>Community rating: {{game.rating}}/10</span>
+        <span class="com-rank-label">Community rating:</span> 
+        <app-game-rating [rating]="game.rating" [width]="25"></app-game-rating>
       </div>
     </div>
   </ion-card-content>
