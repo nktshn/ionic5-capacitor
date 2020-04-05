@@ -4,6 +4,8 @@ import { ApiService } from './api.service';
 import { Endpoints } from './endpoints';
 import { GamesResponse, GamesRequestParams } from 'src/app/api-contracts/games';
 import { map } from 'rxjs/operators';
+import { CreateProfileRequest, ProfileResponse } from 'src/app/api-contracts/profile';
+import { AuthData } from 'src/app/api-contracts/auth-data';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,18 @@ export class BackendService implements IBackendService {
 
   async getGames(params?: GamesRequestParams) {
     return (await this.api.get<GamesRequestParams, GamesResponse>(Endpoints.games(), params)).pipe(
+      map(httpResponse => httpResponse.body)
+    )
+  }
+
+  async signup(profile: CreateProfileRequest) {
+    return (await this.api.post<CreateProfileRequest, AuthData>(Endpoints.signup(), profile)).pipe(
+      map(httpResponse => httpResponse.body)
+    )
+  }
+
+  async getProfile() {
+    return (await this.api.get<null, ProfileResponse>(Endpoints.profile())).pipe(
       map(httpResponse => httpResponse.body)
     )
   }
