@@ -6,9 +6,9 @@
             "description": "Did you not believe in Valve? But it happened! Half Life 3 has been officially released!",
             "coverUrl": "https://goldenguidewow.com/wp-content/uploads/2019/04/Half-Life-3-logo-672x372.jpg",
             "price": 25,
-            "distributor": "Valve",
+            "distributor": "Wealth",
             "rating": 10,
-            "releaseDate": 2367014400
+            "releaseDate": 2367014400000
         },
         {
             "gameId": 0,
@@ -16,9 +16,9 @@
             "description": "Yes, we're still digging caves. Aren't you?",
             "coverUrl": "https://i.ytimg.com/vi/Dg0IjOzopYU/maxresdefault.jpg",
             "price": 150,
-            "distributor": "Mojang",
+            "distributor": "Morejan",
             "rating": 5,
-            "releaseDate": 2367017400
+            "releaseDate": 2367017400000
         },
         {
             "gameId": 0,
@@ -26,9 +26,9 @@
             "description": "Play for 6 different characters in sunny LA! However, again as you used to.",
             "coverUrl": "https://i.playground.ru/p/0EIcJnHt1mwun_AUjCn4uA.jpeg",
             "price": 25,
-            "distributor": "Rockstar Games",
+            "distributor": "Popstar Games",
             "rating": 8,
-            "releaseDate": 2367024400
+            "releaseDate": 2367024400000
         }
     ],
     "amount": 3
