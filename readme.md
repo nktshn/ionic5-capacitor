@@ -1,5 +1,27 @@
 # "Future Game Store" - Ionic 5 + Capacitor demo app
 
+## What can I do?
+
+- Sign up
+- Browse game store
+- Buy a game or just add to the Library if it's free
+- View Profile page
+- View Library page
+
+## Technical features
+
+- Form validation with Reactive Forms
+- Mostly typed code
+- Mocked API calls which can be turned to real one any time by one line of code
+
+### To do
+
+- unit tests
+- e2e tests (web only)
+- adaptive design for tablets
+- router resolvers
+
+
 # How to build & run
 
 - install NodeJS, npm
@@ -8,6 +30,7 @@
 - execute ```npm i```
 
 ## Web
+
 - execute ```ionic serve```
 
 ## Android

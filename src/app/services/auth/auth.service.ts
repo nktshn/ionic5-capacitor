@@ -12,7 +12,7 @@ export class AuthService {
   ) { }
 
   async doesAuthDataExist(): Promise<boolean> {
-    const authData = await this.storage.getAuthData();
+    const authData = await this.getAuthData();
     return !!authData;
   }
 

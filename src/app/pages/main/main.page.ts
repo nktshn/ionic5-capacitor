@@ -44,8 +44,6 @@ export class MainPage implements OnInit {
       skipWhile(profile => !profile),
       take(1)
     ).subscribe(profile => {
-      console.log(profile);
-      
       this.profile = profile;
     });
   }
