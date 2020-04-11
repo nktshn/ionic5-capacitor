@@ -11,11 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { BackendService } from './services/api/backend.service';
 import { BackendMockService } from './services/api/backend-mock.service';
 import { PipesModule } from './pipes/pipes.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, PipesModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, PipesModule, ComponentsModule,],
   providers: [
     StatusBar,
     SplashScreen,

@@ -1,6 +1,6 @@
 # "Future Game Store" - Ionic 5 + Capacitor demo app
 
-## What can I do?
+## App features
 
 - Sign up
 - Browse game store
@@ -20,7 +20,7 @@
 - e2e tests (web only)
 - adaptive design for tablets
 - router resolvers
-
+- error handling
 
 # How to build & run
 

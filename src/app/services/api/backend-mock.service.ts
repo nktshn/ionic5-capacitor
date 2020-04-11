@@ -5,7 +5,7 @@ import { GamesResponse, GamesRequestParams, Game } from 'src/app/api-contracts/g
 import * as gamesMockResponse from './../../backend-mock-responses/games.json';
 import * as profileMockResponse from './../../backend-mock-responses/profile.json';
 import { StorageService } from '../storage/storage.service';
-import { delay } from 'rxjs/operators';
+import { delay, tap } from 'rxjs/operators';
 import { CreateProfileRequest, ProfileResponse } from 'src/app/api-contracts/profile';
 import { AuthData } from 'src/app/api-contracts/auth-data';
 
@@ -20,6 +20,7 @@ export class BackendMockService implements IBackendService {
   ) { }
 
   async getGames(params?: GamesRequestParams) {
+    
     let gamesResponse = await this.storage.getStoreGames();
     return new Observable<GamesResponse>(obs => {
       if (!gamesResponse) {
@@ -30,7 +31,7 @@ export class BackendMockService implements IBackendService {
       obs.next(gamesResponse);
       obs.complete();
     }).pipe(
-      delay(this.mockedApiDelay)
+      delay(this.mockedApiDelay),
     )
   }
 

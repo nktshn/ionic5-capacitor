@@ -4,11 +4,13 @@ import { IonicModule } from '@ionic/angular';
 import { SideMenuComponent } from './side-menu/side-menu.component';
 import { GameCardComponent } from './game-card/game-card.component';
 import { GameRatingComponent } from './game-rating/game-rating.component';
+import { FullscreenLoaderComponent } from './fullscreen-loader/fullscreen-loader.component';
 
 const declarationsAndExports = [
   SideMenuComponent,
   GameCardComponent,
   GameRatingComponent,
+  FullscreenLoaderComponent,
 ]
 
 @NgModule({
