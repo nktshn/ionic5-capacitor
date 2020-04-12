@@ -83,8 +83,8 @@ export class MainPage implements OnInit {
     this.loaderService.showFullscreenLoader();
     const sub = await (this.backend.buyGame(targetGame));
     const toast = await this.toastCtrl.create({
-      message: `You successfully bought "${targetGame.title}"`,
-      duration: 2000
+      message: `"${targetGame.title}" added to your Library`,
+      duration: 3000
     })
     sub.subscribe(profileResponse => {
       this.profile = profileResponse;

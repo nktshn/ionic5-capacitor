@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Game } from 'src/app/api-contracts/games';
 import { EventEmitter } from '@angular/core'
+import { ProfileResponse } from 'src/app/api-contracts/profile';
 
 @Component({
   selector: 'app-game-card',
@@ -9,13 +10,22 @@ import { EventEmitter } from '@angular/core'
 })
 export class GameCardComponent implements OnInit {
 
+  isGameInLibrary: boolean = false;
+
   @Input() game: Game;
+  @Input() profile: ProfileResponse;
 
   @Output() onBuy = new EventEmitter<number>()
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
+
+  ngOnChanges() {
+    this.setIsGameInLibrary();
+  }
 
   getBuyButtonText(): string {
     if (!this.game) {
@@ -26,5 +36,12 @@ export class GameCardComponent implements OnInit {
 
   onBuyButtonClick(): void {
     this.onBuy.emit(this.game.id);
+  }
+
+  private setIsGameInLibrary(): void {
+    if (!this.profile) {
+      return
+    }
+    this.isGameInLibrary = !!this.profile.games.find(boughtGame => boughtGame.id === this.game.id)
   }
 }

@@ -14,7 +14,7 @@ import { AuthData } from 'src/app/api-contracts/auth-data';
 })
 export class BackendMockService implements IBackendService {
 
-  readonly mockedApiDelay = 500; // ms
+  readonly mockedApiDelay = 1000; // ms
   constructor(
     private storage: StorageService,
   ) { }
@@ -63,6 +63,7 @@ export class BackendMockService implements IBackendService {
   async buyGame(game: Game) {
     const profileResponse: ProfileResponse = await this.storage.getProfile();
     profileResponse.balance -= game.price;
+    profileResponse.games.push(game)
     this.storage.setProfile(profileResponse);
     return new Observable<ProfileResponse>(obs => {
       obs.next(profileResponse);
