@@ -2,7 +2,7 @@
   <ion-item>
     <!-- <ion-icon name="heart-outline"></ion-icon> -->
     <ion-label>{{game.title}}</ion-label>
-    <ion-button fill="outline" slot="end">{{getBuyButtonText()}}</ion-button>
+    <ion-button (click)="onBuyButtonClick()" fill="outline" slot="end">{{getBuyButtonText()}}</ion-button>
   </ion-item>
 
   <ion-card-content>

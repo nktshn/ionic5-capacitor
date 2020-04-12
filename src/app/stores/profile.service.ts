@@ -20,4 +20,8 @@ export class ProfileService {
       this.profile.next(profileRes);
     });
   }
+
+  setProfileData(profile: ProfileResponse) {
+    this.profile.next(profile);
+  }
 }

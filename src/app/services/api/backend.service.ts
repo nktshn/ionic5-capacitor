@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { IBackendService } from './backend.interface';
 import { ApiService } from './api.service';
 import { Endpoints } from './endpoints';
-import { GamesResponse, GamesRequestParams } from 'src/app/api-contracts/games';
+import { GamesResponse, GamesRequestParams, Game } from 'src/app/api-contracts/games';
 import { map } from 'rxjs/operators';
 import { CreateProfileRequest, ProfileResponse } from 'src/app/api-contracts/profile';
 import { AuthData } from 'src/app/api-contracts/auth-data';
@@ -30,6 +30,12 @@ export class BackendService implements IBackendService {
 
   async getProfile() {
     return (await this.api.get<null, ProfileResponse>(Endpoints.profile())).pipe(
+      map(httpResponse => httpResponse.body)
+    )
+  }
+
+  async buyGame(game: Game) {
+    return (await this.api.post<null, ProfileResponse>(Endpoints.buyGame(game.id), null)).pipe(
       map(httpResponse => httpResponse.body)
     )
   }

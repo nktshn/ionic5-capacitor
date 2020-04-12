@@ -4,7 +4,7 @@ export interface GamesResponse {
 }
 
 export interface Game {
-    gameId: number;
+    id: number;
     title: string;
     description: string;
     coverUrl: string;

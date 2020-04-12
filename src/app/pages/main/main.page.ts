@@ -5,6 +5,9 @@ import { skipWhile, take } from 'rxjs/operators';
 import { ProfileService } from 'src/app/stores/profile.service';
 import { ProfileResponse } from 'src/app/api-contracts/profile';
 import { LoaderService } from 'src/app/services/loader/loader.service';
+import { ModalController, ToastController } from '@ionic/angular';
+import { GameBuyingModalComponent } from 'src/app/components/game-buying-modal/game-buying-modal.component';
+import { BackendService } from 'src/app/services/api/backend.service';
 
 @Component({
   selector: 'app-main',
@@ -19,7 +22,10 @@ export class MainPage implements OnInit {
   constructor(
     private gamesService: GamesService,
     private profileService: ProfileService,
-    private loaderService:  LoaderService,
+    private loaderService: LoaderService,
+    private modalCtrl: ModalController,
+    private backend: BackendService,
+    private toastCtrl: ToastController,
   ) { }
 
   ngOnInit() {
@@ -28,6 +34,14 @@ export class MainPage implements OnInit {
   }
 
   ngOnDestroy() {
+  }
+
+  onBuyGame(gameId: number): void {
+    const targetGame = this.storeGames.find(game => game.id === gameId);
+    if (!targetGame) {
+      throw new Error('onBuyGame -> no game found')
+    }
+    this.buyGame(targetGame);
   }
 
   private loadGames(): void {
@@ -41,7 +55,7 @@ export class MainPage implements OnInit {
       this.loaderService.hideFullscreenLoader();
     });
   }
-    
+
   private loadProfile(): void {
     this.profileService.retrieveProfile();
     this.profileService.profile.pipe(
@@ -52,4 +66,32 @@ export class MainPage implements OnInit {
     });
   }
 
- }
+  private async buyGame(targetGame: Game) {
+    // that ionic's modal api is awful...
+    const modal = await this.modalCtrl.create({
+      component: GameBuyingModalComponent,
+      componentProps: {
+        game: targetGame,
+      }
+    });
+    modal.present();
+    const modalData = await modal.onWillDismiss();
+    const isPurchaseConfirmed = modalData.data as boolean;
+    if (!isPurchaseConfirmed) {
+      return;
+    }
+    this.loaderService.showFullscreenLoader();
+    const sub = await (this.backend.buyGame(targetGame));
+    const toast = await this.toastCtrl.create({
+      message: `You successfully bought "${targetGame.title}"`,
+      duration: 2000
+    })
+    sub.subscribe(profileResponse => {
+      this.profile = profileResponse;
+      this.profileService.setProfileData(profileResponse);
+      toast.present();
+      this.loaderService.hideFullscreenLoader();
+    })
+  }
+
+}

@@ -59,4 +59,16 @@ export class BackendMockService implements IBackendService {
       delay(this.mockedApiDelay)
     )
   }
+
+  async buyGame(game: Game) {
+    const profileResponse: ProfileResponse = await this.storage.getProfile();
+    profileResponse.balance -= game.price;
+    this.storage.setProfile(profileResponse);
+    return new Observable<ProfileResponse>(obs => {
+      obs.next(profileResponse);
+      obs.complete();
+    }).pipe(
+      delay(this.mockedApiDelay)
+    )
+  }
 }

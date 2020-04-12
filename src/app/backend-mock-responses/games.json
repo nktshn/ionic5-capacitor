@@ -1,7 +1,7 @@
 {
     "games": [
         {
-            "gameId": 0,
+            "id": 0,
             "title": "Half Life 3",
             "description": "Did you not believe in Valve? But it happened! Half Life 3 has been officially released!",
             "coverUrl": "https://goldenguidewow.com/wp-content/uploads/2019/04/Half-Life-3-logo-672x372.jpg",
@@ -11,7 +11,7 @@
             "releaseDate": 2367014400000
         },
         {
-            "gameId": 1,
+            "id": 1,
             "title": "Minecraft 3",
             "description": "Yes, we're still digging caves. Aren't you?",
             "coverUrl": "https://i.ytimg.com/vi/Dg0IjOzopYU/maxresdefault.jpg",
@@ -21,7 +21,7 @@
             "releaseDate": 2367017400000
         },
         {
-            "gameId": 2,
+            "id": 2,
             "title": "Grand Theft Auto 6",
             "description": "Play for 6 different characters in sunny LA! However, again as you used to.",
             "coverUrl": "https://i.playground.ru/p/0EIcJnHt1mwun_AUjCn4uA.jpeg",
@@ -31,7 +31,7 @@
             "releaseDate": 2367024400000
         },
         {
-            "gameId": 3,
+            "id": 3,
             "title": "Dota 3",
             "description": "Same map, 32 new heroes, 1789 new items, no balance. ",
             "coverUrl": "https://i.ytimg.com/vi/RElTXYx35i8/maxresdefault.jpg",

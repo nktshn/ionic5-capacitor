@@ -10,4 +10,8 @@ export class Endpoints {
     static profile(): string {
         return 'profile';
     }
+
+    static buyGame(gameId: number) {
+        return `buy/game/${gameId}`
+    }
 }
