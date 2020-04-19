@@ -8,10 +8,10 @@ const { Storage } = Plugins;
 })
 export class StorageApiService {
   constructor(
-    
-    ) { }
-    
-    async set(key: string, value: any) {
+
+  ) { }
+
+  async set(key: string, value: any) {
     return await Storage.set({
       key,
       value: JSON.stringify(value)

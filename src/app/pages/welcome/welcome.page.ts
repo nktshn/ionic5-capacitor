@@ -25,7 +25,7 @@ export class WelcomePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.initUsernameorm();
+    this.initUsernameForm();
   }
 
   async onUsernameFormSubmit() {
@@ -43,7 +43,7 @@ export class WelcomePage implements OnInit {
     })
   }
 
-  private initUsernameorm(): void {
+  private initUsernameForm(): void {
     this.usernameForm = new FormBuilder().group({
       username: ['', Validators.compose(
         [Validators.required, Validators.minLength(4), Validators.maxLength(16), Validators.pattern(ValidationPatterns.USERNAME)])],

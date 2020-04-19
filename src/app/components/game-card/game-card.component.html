@@ -1,11 +1,9 @@
 <ion-card *ngIf="game">
   <ion-item>
-    <!-- <ion-icon name="heart-outline"></ion-icon> -->
     <ion-label>{{game.title}}</ion-label>
     <ion-button *ngIf="!isGameInLibrary" (click)="onBuyButtonClick()" fill="outline" slot="end">{{getBuyButtonText()}}</ion-button>
-    <!-- <ion-button *ngIf="isGameInLibrary" slot="end">Added</ion-button> -->
     <ng-container *ngIf="isGameInLibrary">
-      <ion-chip color="dark">
+      <ion-chip class="added-chip" color="dark">
         <ion-icon name="checkmark-circle-outline"></ion-icon>
         <ion-label>Added</ion-label>
       </ion-chip>
