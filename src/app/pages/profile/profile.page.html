@@ -10,5 +10,19 @@
 </ion-header>
 
 <ion-content>
+  <div *ngIf="!!profile" class="wrap">
+    <div class="header">
+      <div class="avatar">
+        <ion-icon class="avatar" name="person-circle-outline"></ion-icon>
+      </div>
+      <div class="profile-info">
+        <strong class="username">{{profile.username}}</strong>
+        <span class="balance">Balance: <strong>{{profile.balance | currency}}</strong></span>
+        <div class="games-amount">Games owned: <strong>{{profile.games.length}}</strong></div>
+      </div>
+    </div>
+    <div class="body">
 
+    </div>
+  </div>
 </ion-content>

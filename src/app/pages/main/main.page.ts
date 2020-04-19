@@ -71,7 +71,8 @@ export class MainPage implements OnInit {
     const modal = await this.modalCtrl.create({
       component: GameBuyingModalComponent,
       componentProps: {
-        game: targetGame,
+        itemsToBuy: [targetGame],
+        profile:  this.profile,
       }
     });
     modal.present();

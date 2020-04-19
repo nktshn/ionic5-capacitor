@@ -31,7 +31,7 @@ export class GameCardComponent implements OnInit {
     if (!this.game) {
       return '';
     }
-    return this.game.price > 0 ? `Buy for ${this.game.price}$` : `Free to play`;
+    return this.game.price > 0 ? `Buy for $${this.game.price}` : `Free to play`;
   }
 
   onBuyButtonClick(): void {

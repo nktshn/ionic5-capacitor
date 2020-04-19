@@ -7,5 +7,24 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-button (click)="onConfirm()">Confirm</ion-button>
+  <div *ngIf="this.itemsToBuy" class="wrap">
+    <div class="purchase-info">
+      <h5 class="action-hint">You are going to buy following item(s):</h5>
+      <div class="item-list">
+        <ion-item *ngFor="let item of itemsToBuy" class="game-details">
+          <div class="game-cover" [ngStyle]="getItemCoverNgStyle(item)"></div>
+          <strong class="game-title">{{item.title}}</strong>
+          <strong slot="end" class="price">{{item.price | currency}}</strong>
+        </ion-item>
+      </div>
+      <div class="summary">
+        <span class="total">Total: <strong>{{getTotalCost() | currency}}</strong></span>
+        <span class="balance">Your balance: <strong>{{profile.balance | currency}}</strong></span>
+        <ion-text *ngIf="calculateIsInsufficientFunds()" color="warning">
+          <span class="insufficient-funds-hint">Not enough funds to continue. Another {{getDifferenceBetweenTotalAndBalance() | currency}} are needed to proceed.</span>
+        </ion-text>
+      </div>
+    </div>
+    <ion-button [disabled]="calculateIsInsufficientFunds()" (click)="onConfirm()">Confirm</ion-button>
+  </div>
 </ion-content>

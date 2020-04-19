@@ -1,0 +1,18 @@
+.wrap {
+    padding: 24px;
+    .header {
+        display: flex;
+    }
+    .avatar {
+        font-size: 100px;
+        margin: -6px 13px -7px -6px;
+        width: 100px;
+        height: 100px;
+    }
+    .profile-info {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+}

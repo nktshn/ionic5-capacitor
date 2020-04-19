@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { Game } from 'src/app/api-contracts/games';
+import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { IBuyable } from 'src/app/models/buyable.interface';
 
 @Component({
   selector: 'app-game-buying-modal',
@@ -9,13 +10,16 @@ import { Game } from 'src/app/api-contracts/games';
 })
 export class GameBuyingModalComponent implements OnInit {
 
-  @Input() game: Game;
-  
+  @Input() itemsToBuy: IBuyable[];
+  @Input() profile: ProfileResponse;
+
   constructor(
     private modalCtrl: ModalController,
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+   
+  }
 
   onCancel(): void {
     this.modalCtrl.dismiss(false);
@@ -23,6 +27,26 @@ export class GameBuyingModalComponent implements OnInit {
 
   onConfirm(): void {
     this.modalCtrl.dismiss(true);
+  }
+
+  getItemCoverNgStyle(item: IBuyable) {
+    return {'background-image': `url(${item.coverUrl})`}
+  }
+
+  getTotalCost(): number {
+    return this.itemsToBuy.map(item => item.price).reduce((acc, price) => acc += price);
+  }
+
+  calculateIsInsufficientFunds(): boolean {
+    const balance = this.profile.balance;
+    const total =  this.getTotalCost();
+    return balance < total;
+  }
+
+  getDifferenceBetweenTotalAndBalance(): number {
+    const balance = this.profile.balance;
+    const total =  this.getTotalCost();
+    return total - balance;
   }
 
 }
