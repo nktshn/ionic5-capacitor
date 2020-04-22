@@ -19,6 +19,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: RoutingPaths.library,
+    loadChildren: () => import('./pages/library/library.module').then( m => m.LibraryPageModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

@@ -6,6 +6,7 @@ import { GameCardComponent } from './game-card/game-card.component';
 import { GameRatingComponent } from './game-rating/game-rating.component';
 import { FullscreenLoaderComponent } from './fullscreen-loader/fullscreen-loader.component';
 import { GameBuyingModalComponent } from './game-buying-modal/game-buying-modal.component';
+import { ItemCoverComponent } from './ui/item-cover/item-cover.component';
 
 const declarationsAndExports = [
   SideMenuComponent,
@@ -13,6 +14,7 @@ const declarationsAndExports = [
   GameRatingComponent,
   FullscreenLoaderComponent,
   GameBuyingModalComponent,
+  ItemCoverComponent,
 ]
 
 @NgModule({

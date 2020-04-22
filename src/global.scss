@@ -31,6 +31,12 @@
     --loaderSpinnerZIndex: 11;
 }
 
+ion-item {
+    &:hover {
+        filter: brightness(1.15)!important;
+    }
+}
+
 .hint {
     text-align: left;
     font-size: 12px;

@@ -19,6 +19,11 @@ export class SideMenuService {
       ionIconName: 'game-controller-outline',
       link: `${RoutingPaths.main}`
     },
+    {
+      title: 'Library',
+      ionIconName: 'library-outline',
+      link: `${RoutingPaths.library}`
+    },
   ];
 
   constructor(
