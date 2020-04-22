@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-row>
+      <ion-title *ngIf="game">{{game.title}}</ion-title>
+    </ion-row>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="game">
+  <img [src]="game.coverUrl" alt="">
+  <div class="desc">{{game.description}}</div>
+  <div class="game-data">
+    <div class="left">
+      <span>Distributor: {{game.distributor}}</span>
+      <span>Release date: {{game.releaseDate | date:'mediumDate'}}</span>
+    </div>
+    <div class="right">
+      <span class="com-rank-label">Community rating:</span>
+      <app-game-rating [rating]="game.rating" [width]="30"></app-game-rating>
+    </div>
+  </div>
+
+</ion-content>

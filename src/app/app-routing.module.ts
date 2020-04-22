@@ -24,6 +24,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/library/library.module').then( m => m.LibraryPageModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: `${RoutingPaths.game}/:id`,
+    loadChildren: () => import('./pages/game/game.module').then( m => m.GamePageModule),
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

@@ -72,4 +72,18 @@ export class BackendMockService implements IBackendService {
       delay(this.mockedApiDelay)
     )
   }
+
+  async getGameById(id: number) {    
+    const gamesResponse = await this.storage.getStoreGames(); 
+    return new Observable<Game>(obs => {
+      const targetGame = gamesResponse.games.find(game => game.id === id);
+      if (!targetGame) {
+        obs.error(`no game found by id ${id}`)
+      }
+      obs.next(targetGame);
+      obs.complete();
+    }).pipe(
+      delay(this.mockedApiDelay)
+    )
+  }
 }

@@ -2,5 +2,6 @@ export const RoutingPaths = {
     main: 'main',
     profile: 'profile',
     welcome: 'welcome',
-    library: 'library'
+    library: 'library',
+    game: 'game'
 }

@@ -39,4 +39,10 @@ export class BackendService implements IBackendService {
       map(httpResponse => httpResponse.body)
     )
   }
+
+  async getGameById(id: number) {
+    return (await this.api.get<null, Game>(Endpoints.buyGame(id), null)).pipe(
+      map(httpResponse => httpResponse.body)
+    )
+  }
 }

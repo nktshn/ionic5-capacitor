@@ -14,7 +14,7 @@
     <ion-list-header>
       <ion-label>Added</ion-label>
     </ion-list-header>
-    <ion-item *ngFor="let game of games">
+    <ion-item *ngFor="let game of games" (click)="goToGamePage(game.id)">
       <app-item-cover [imageUrl]="game.coverUrl" [height]="40"></app-item-cover>
       <ion-label>{{game.title}}</ion-label>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>

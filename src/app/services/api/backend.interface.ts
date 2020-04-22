@@ -8,4 +8,5 @@ export interface IBackendService {
     signup(profile: CreateProfileRequest): Promise<Observable<AuthData>>;
     getProfile(): Promise<Observable<ProfileResponse>>;
     buyGame(game: Game): Promise<Observable<ProfileResponse>>;
+    getGameById(id: number): Promise<Observable<Game>>;
 }
