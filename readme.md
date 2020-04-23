@@ -29,6 +29,7 @@
 - install ionic CLI by ```npm i @ionic/cli@latest -g``` 
 - make sure you are in "master" git branch
 - execute ```npm i```
+- generate icons and splashes by ```npm run resources```
 
 ## Web
 

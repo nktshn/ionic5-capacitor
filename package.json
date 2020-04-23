@@ -12,7 +12,8 @@
     "e2e": "ng e2e",
     "serve": "ionic serve",
     "build:native": "ionic build --prod && npx cap copy",
-    "install:android": "npm run build:native && cd android && gradlew installDebug"
+    "install:android": "npm run build:native && cd android && gradlew installDebug",
+    "resources": "capacitor-resources -p android -i src/resources/icon.png -s src/resources/splash.png"
   },
   "private": true,
   "dependencies": {
