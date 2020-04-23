@@ -10,6 +10,6 @@
 
 <ion-content id="main">
   <div class="grid">
-    <app-game-card (onBuy)="onBuyGame($event)" *ngFor="let game of storeGames" [game]="game" [profile]="profile"></app-game-card>
+    <app-game-card (click)="goToGamePage(game.id)" (onBuy)="onBuyGame($event)" *ngFor="let game of storeGames" [game]="game" [profile]="profile"></app-game-card>
   </div>
 </ion-content>

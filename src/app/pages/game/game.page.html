@@ -6,21 +6,32 @@
     <ion-row>
       <ion-title *ngIf="game">{{game.title}}</ion-title>
     </ion-row>
+    <ion-chip *ngIf="hasThisGame()" slot="end" class="added-chip" color="dark">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+      <ion-label>Added</ion-label>
+    </ion-chip>
   </ion-toolbar>
 </ion-header>
 
 <ion-content *ngIf="game">
-  <img [src]="game.coverUrl" alt="">
-  <div class="desc">{{game.description}}</div>
-  <div class="game-data">
-    <div class="left">
-      <span>Distributor: {{game.distributor}}</span>
-      <span>Release date: {{game.releaseDate | date:'mediumDate'}}</span>
+  <div class="wrap">
+    <img class="cover" [src]="game.coverUrl" alt="{{game.title}}">
+    <div class="desc">{{game.description}}</div>
+    <hr>
+    <div class="game-data">
+      <div class="left">
+        <span>Distributor: <strong>{{game.distributor}}</strong></span>
+        <span>Release date: <strong>{{game.releaseDate | date:'mediumDate'}}</strong></span>
+      </div>
+      <div class="right">
+        <app-game-rating [rating]="game.rating" [width]="30"></app-game-rating>
+      </div>
     </div>
-    <div class="right">
-      <span class="com-rank-label">Community rating:</span>
-      <app-game-rating [rating]="game.rating" [width]="30"></app-game-rating>
+    <hr>
+    <div class="game-data buy-block">
+      <span>Price: <strong>{{game.price > 0 ? (game.price | currency) : 'Free To Play'}}</strong></span>
     </div>
+    <ion-button *ngIf="!hasThisGame()" (click)="onBuyGame(game.id)" class="buy-button">{{game.price > 0 ? 'Buy' : 'Add to my Library'}}</ion-button>
   </div>
 
 </ion-content>

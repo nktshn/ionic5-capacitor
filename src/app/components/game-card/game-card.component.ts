@@ -34,7 +34,8 @@ export class GameCardComponent implements OnInit {
     return this.game.price > 0 ? `Buy for $${this.game.price}` : `Free to play`;
   }
 
-  onBuyButtonClick(): void {
+  onBuyButtonClick(clickEvent: MouseEvent): void {
+    clickEvent.stopPropagation();
     this.onBuy.emit(this.game.id);
   }
 

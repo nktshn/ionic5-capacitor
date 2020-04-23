@@ -5,6 +5,7 @@ import { skipWhile, take } from 'rxjs/operators';
 import { ProfileService } from 'src/app/stores/profile.service';
 import { Router } from '@angular/router';
 import { RoutingPaths } from 'src/app/routing-paths';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-library',
@@ -13,12 +14,13 @@ import { RoutingPaths } from 'src/app/routing-paths';
 })
 export class LibraryPage implements OnInit {
 
-  games: Game[] = [];
+  games: Game[];
   
   constructor(
     private profileService: ProfileService,
     private loaderService: LoaderService,
     private router: Router,
+    private navCtrl: NavController,
   ) { }
 
   ngOnInit() {
@@ -27,6 +29,10 @@ export class LibraryPage implements OnInit {
 
   goToGamePage(gameId: number) {
     this.router.navigateByUrl(`${RoutingPaths.game}/${gameId}`);
+  }
+
+  goToGameStore() {
+    this.navCtrl.navigateRoot(RoutingPaths.main);
   }
 
   private loadProfile(): void {

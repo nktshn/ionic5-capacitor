@@ -37,6 +37,12 @@ ion-item {
     }
 }
 
+hr {
+    height: 1px;
+    width: 100%;
+    background: linear-gradient(45deg, transparent, var(--ion-color-step-250),var(--ion-color-step-250),var(--ion-color-step-250),transparent);
+}
+
 .hint {
     text-align: left;
     font-size: 12px;

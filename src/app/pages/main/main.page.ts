@@ -8,6 +8,8 @@ import { LoaderService } from 'src/app/services/loader/loader.service';
 import { ModalController, ToastController } from '@ionic/angular';
 import { GameBuyingModalComponent } from 'src/app/components/game-buying-modal/game-buying-modal.component';
 import { BackendService } from 'src/app/services/api/backend.service';
+import { Router } from '@angular/router';
+import { RoutingPaths } from 'src/app/routing-paths';
 
 @Component({
   selector: 'app-main',
@@ -26,6 +28,7 @@ export class MainPage implements OnInit {
     private modalCtrl: ModalController,
     private backend: BackendService,
     private toastCtrl: ToastController,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -42,6 +45,10 @@ export class MainPage implements OnInit {
       throw new Error('onBuyGame -> no game found')
     }
     this.buyGame(targetGame);
+  }
+
+  goToGamePage(gameId: number) {
+    this.router.navigateByUrl(`${RoutingPaths.game}/${gameId}`);
   }
 
   private loadGames(): void {

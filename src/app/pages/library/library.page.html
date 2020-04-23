@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="games?.length > 0">
     <ion-list-header>
       <ion-label>Added</ion-label>
     </ion-list-header>
@@ -20,4 +20,9 @@
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
+  <div *ngIf="games?.length === 0" class="no-games">
+    <ion-icon name="sad-outline"></ion-icon>
+    <div class="no-games-text">Unfortunately you do not have any item in your Library yet.</div>
+    <ion-button (click)="goToGameStore()" color="primary">Go to Game Store</ion-button>
+  </div>
 </ion-content>

@@ -7,6 +7,7 @@
 - Buy a game or just add to the Library if it's free
 - View Profile page
 - View Library page
+- View game details page
 
 ## Technical features
 
@@ -31,7 +32,7 @@
 
 ## Web
 
-- execute ```ionic serve```
+- execute ```npm run serve```
 
 ## Android
 

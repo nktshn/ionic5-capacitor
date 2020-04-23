@@ -5,6 +5,8 @@ import { ActivatedRoute } from '@angular/router';
 import { switchMap, flatMap, skipWhile, take } from 'rxjs/operators';
 import { BackendService } from 'src/app/services/api/backend.service';
 import { GamesService } from 'src/app/stores/games.service';
+import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { ProfileService } from 'src/app/stores/profile.service';
 
 @Component({
   selector: 'app-game',
@@ -14,16 +16,40 @@ import { GamesService } from 'src/app/stores/games.service';
 export class GamePage implements OnInit {
 
   game: Game;
+  profile: ProfileResponse;
 
   constructor(
     private loaderService: LoaderService,
     private route: ActivatedRoute,
     private backend: BackendService,
     private gamesService: GamesService,
+    private profileService: ProfileService,
   ) { }
 
   ngOnInit() {
     this.loadGame();
+    this.loadProfile();
+  }
+
+  onBuyGame(gameId: number): void {
+
+  }
+
+  hasThisGame(): boolean {
+    if (!this.profile || !this.game) {
+      return false;
+    }
+    return !!this.profile.games.find(game => game.id === this.game.id);
+  }
+
+  private loadProfile(): void {
+    this.profileService.retrieveProfile();
+    this.profileService.profile.pipe(
+      skipWhile(profile => !profile),
+      take(1)
+    ).subscribe(profile => {
+      this.profile = profile;
+    });
   }
 
   private async loadGame() {
