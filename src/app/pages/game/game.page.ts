@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Game } from 'src/app/api-contracts/games';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { ActivatedRoute } from '@angular/router';
-import { switchMap, flatMap, skipWhile, take } from 'rxjs/operators';
+import { skipWhile } from 'rxjs/operators';
 import { BackendService } from 'src/app/services/api/backend.service';
 import { GamesService } from 'src/app/stores/games.service';
 import { ProfileResponse } from 'src/app/api-contracts/profile';
 import { ProfileService } from 'src/app/stores/profile.service';
+import { IonModalService } from 'src/app/services/ion-modals/ion-modal.service';
 
 @Component({
   selector: 'app-game',
@@ -24,6 +25,7 @@ export class GamePage implements OnInit {
     private backend: BackendService,
     private gamesService: GamesService,
     private profileService: ProfileService,
+    private ionModalService: IonModalService,
   ) { }
 
   ngOnInit() {
@@ -31,8 +33,8 @@ export class GamePage implements OnInit {
     this.loadProfile();
   }
 
-  onBuyGame(gameId: number): void {
-
+  onBuyGame(): void {
+    this.ionModalService.showBuyGameModal(this.profile, this.game);
   }
 
   hasThisGame(): boolean {
@@ -46,7 +48,6 @@ export class GamePage implements OnInit {
     this.profileService.retrieveProfile();
     this.profileService.profile.pipe(
       skipWhile(profile => !profile),
-      take(1)
     ).subscribe(profile => {
       this.profile = profile;
     });
@@ -81,7 +82,6 @@ export class GamePage implements OnInit {
   private getPreloadedGameFromStore(gameId: number): Promise<Game> {
     return new Promise((resolve, reject) => {
       this.gamesService.games.pipe(
-        take(1)
       ).subscribe(preloadedGames => {
         if (preloadedGames) {
           const game = preloadedGames.find(game => game.id === gameId);
