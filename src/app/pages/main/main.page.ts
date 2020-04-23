@@ -8,6 +8,7 @@ import { LoaderService } from 'src/app/services/loader/loader.service';
 import { Router } from '@angular/router';
 import { RoutingPaths } from 'src/app/routing-paths';
 import { IonModalService } from 'src/app/services/ion-modals/ion-modal.service';
+import { IonRefresher } from '@ionic/angular';
 
 @Component({
   selector: 'app-main',
@@ -45,6 +46,12 @@ export class MainPage implements OnInit {
 
   goToGamePage(gameId: number) {
     this.router.navigateByUrl(`${RoutingPaths.game}/${gameId}`);
+  }
+
+  onPageRefresh(event: IonRefresher) {
+    this.gamesService.retrieveStoreGames().then(_ => {
+      event.complete();
+    })
   }
 
   private loadGames(): void {

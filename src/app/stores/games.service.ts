@@ -9,15 +9,18 @@ import { BehaviorSubject } from 'rxjs';
 export class GamesService {
 
   readonly games = new BehaviorSubject<Game[]>(null);
-  
+
   constructor(
     private backend: BackendService,
   ) { }
 
   async retrieveStoreGames() {
-    const sub = await this.backend.getGames();
-    sub.subscribe(gamesRes => {
-      this.games.next(gamesRes.games);
-    });
+    return new Promise(async resolve => {
+      const sub = await this.backend.getGames();
+      sub.subscribe(gamesRes => {
+        this.games.next(gamesRes.games);
+        resolve();
+      });
+    })
   }
 }
