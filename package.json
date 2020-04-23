@@ -11,7 +11,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "serve": "ionic serve",
-    "build:native": "ionic build && npx cap copy",
+    "build:native": "ionic build --prod && npx cap copy",
     "install:android": "npm run build:native && cd android && gradlew installDebug"
   },
   "private": true,

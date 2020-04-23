@@ -16,7 +16,7 @@ export class ItemCoverComponent implements OnInit {
 
   ngOnInit() {}
 
-  getItemCoverNgStyle(item: IBuyable) {
+  getItemCoverNgStyle() {
     return {
       'background-image': `url(${this.imageUrl})`,
       'height': `${this.height}px`,

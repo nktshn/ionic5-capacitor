@@ -31,7 +31,7 @@
     <div class="game-data buy-block">
       <span>Price: <strong>{{game.price > 0 ? (game.price | currency) : 'Free To Play'}}</strong></span>
     </div>
-    <ion-button *ngIf="!hasThisGame()" (click)="onBuyGame(game.id)" class="buy-button">{{game.price > 0 ? 'Buy' : 'Add to my Library'}}</ion-button>
+    <ion-button *ngIf="!hasThisGame()" (click)="onBuyGame()" class="buy-button">{{game.price > 0 ? 'Buy' : 'Add to my Library'}}</ion-button>
   </div>
 
 </ion-content>
