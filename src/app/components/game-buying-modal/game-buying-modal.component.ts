@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { Profile } from 'src/app/api-contracts/profile';
 import { IBuyable } from 'src/app/models/buyable.interface';
 
 @Component({
@@ -11,7 +11,7 @@ import { IBuyable } from 'src/app/models/buyable.interface';
 export class GameBuyingModalComponent implements OnInit {
 
   @Input() itemsToBuy: IBuyable[];
-  @Input() profile: ProfileResponse;
+  @Input() profile: Profile;
 
   constructor(
     private modalCtrl: ModalController,

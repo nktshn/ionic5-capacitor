@@ -3,7 +3,7 @@ import { GamesService } from 'src/app/stores/games.service';
 import { Game } from 'src/app/api-contracts/games';
 import { skipWhile } from 'rxjs/operators';
 import { ProfileService } from 'src/app/stores/profile.service';
-import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { Profile } from 'src/app/api-contracts/profile';
 import { LoaderService } from 'src/app/services/loader/loader.service';
 import { Router } from '@angular/router';
 import { RoutingPaths } from 'src/app/routing-paths';
@@ -18,7 +18,7 @@ import { IonRefresher } from '@ionic/angular';
 export class MainPage implements OnInit {
 
   storeGames: Game[] = [];
-  profile: ProfileResponse;
+  profile: Profile;
 
   constructor(
     private gamesService: GamesService,

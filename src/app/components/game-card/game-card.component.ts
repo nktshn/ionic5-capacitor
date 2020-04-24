@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Game } from 'src/app/api-contracts/games';
 import { EventEmitter } from '@angular/core'
-import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { Profile } from 'src/app/api-contracts/profile';
 
 @Component({
   selector: 'app-game-card',
@@ -13,7 +13,7 @@ export class GameCardComponent implements OnInit {
   isGameInLibrary: boolean = false;
 
   @Input() game: Game;
-  @Input() profile: ProfileResponse;
+  @Input() profile: Profile;
 
   @Output() onBuy = new EventEmitter<number>()
 

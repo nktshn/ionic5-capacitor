@@ -5,8 +5,10 @@ export interface CreateProfileRequest {
     // TODO
 }
 
-export interface ProfileResponse {
+export interface Profile {
     username: string;
     balance: number;
-    games: Game[]
+    games: Game[];
+    avatarLink: string;
+    about: string;
 }

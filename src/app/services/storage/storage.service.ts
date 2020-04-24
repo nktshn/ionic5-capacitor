@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { StorageApiService } from './storage-api.service';
 import { GamesResponse } from 'src/app/api-contracts/games';
 import { AuthData } from 'src/app/api-contracts/auth-data';
-import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { Profile } from 'src/app/api-contracts/profile';
 
 @Injectable({
   providedIn: 'root'
@@ -29,12 +29,12 @@ export class StorageService {
     return await this.storageApi.set(STORAGE_KEYS.AUTH_DATA, data);
   }
   
-  async setProfile(profile: ProfileResponse): Promise<void> {
+  async setProfile(profile: Profile): Promise<void> {
     return await this.storageApi.set(STORAGE_KEYS.PROFILE, profile);
   }
 
-  async getProfile(): Promise<ProfileResponse> {
-    return await this.storageApi.get<ProfileResponse>(STORAGE_KEYS.PROFILE);
+  async getProfile(): Promise<Profile> {
+    return await this.storageApi.get<Profile>(STORAGE_KEYS.PROFILE);
   }
 
 }

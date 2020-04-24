@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { skipWhile } from 'rxjs/operators';
 import { BackendService } from 'src/app/services/api/backend.service';
 import { GamesService } from 'src/app/stores/games.service';
-import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { Profile } from 'src/app/api-contracts/profile';
 import { ProfileService } from 'src/app/stores/profile.service';
 import { IonModalService } from 'src/app/services/ion-modals/ion-modal.service';
 
@@ -17,7 +17,7 @@ import { IonModalService } from 'src/app/services/ion-modals/ion-modal.service';
 export class GamePage implements OnInit {
 
   game: Game;
-  profile: ProfileResponse;
+  profile: Profile;
 
   constructor(
     private loaderService: LoaderService,

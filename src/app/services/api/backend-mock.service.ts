@@ -6,7 +6,7 @@ import * as gamesMockResponse from './../../backend-mock-responses/games.json';
 import * as profileMockResponse from './../../backend-mock-responses/profile.json';
 import { StorageService } from '../storage/storage.service';
 import { delay, tap } from 'rxjs/operators';
-import { CreateProfileRequest, ProfileResponse } from 'src/app/api-contracts/profile';
+import { CreateProfileRequest, Profile } from 'src/app/api-contracts/profile';
 import { AuthData } from 'src/app/api-contracts/auth-data';
 
 @Injectable({
@@ -37,7 +37,7 @@ export class BackendMockService implements IBackendService {
 
   async signup(profile: CreateProfileRequest) {
     return new Observable<AuthData>(obs => {
-      const profileResponse: ProfileResponse = (profileMockResponse as any).default;
+      const profileResponse: Profile = (profileMockResponse as any).default;
       profileResponse.username = profile.username;
       this.storage.setProfile(profileResponse);
       const authData: AuthData = {
@@ -51,8 +51,8 @@ export class BackendMockService implements IBackendService {
   }
 
   async getProfile() {
-    const profileResponse: ProfileResponse = await this.storage.getProfile();
-    return new Observable<ProfileResponse>(obs => {
+    const profileResponse: Profile = await this.storage.getProfile();
+    return new Observable<Profile>(obs => {
       obs.next(profileResponse);
       obs.complete();
     }).pipe(
@@ -61,11 +61,11 @@ export class BackendMockService implements IBackendService {
   }
 
   async buyGame(game: Game) {
-    const profileResponse: ProfileResponse = await this.storage.getProfile();
+    const profileResponse: Profile = await this.storage.getProfile();
     profileResponse.balance -= game.price;
     profileResponse.games.push(game)
     this.storage.setProfile(profileResponse);
-    return new Observable<ProfileResponse>(obs => {
+    return new Observable<Profile>(obs => {
       obs.next(profileResponse);
       obs.complete();
     }).pipe(
@@ -82,6 +82,20 @@ export class BackendMockService implements IBackendService {
       }
       obs.next(targetGame);
       obs.complete();
+    }).pipe(
+      delay(this.mockedApiDelay)
+    )
+  }
+
+  async updateProfile(profile: Partial<Profile>) {
+    const storedProfile: Profile = await this.storage.getProfile();
+    Object.keys(profile).forEach(key => {
+      storedProfile[key] = profile[key];
+    });
+    this.storage.setProfile(storedProfile);
+    return new Observable<Profile>(obs => {
+      obs.next(storedProfile);
+      obs.complete()
     }).pipe(
       delay(this.mockedApiDelay)
     )

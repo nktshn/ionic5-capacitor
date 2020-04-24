@@ -13,16 +13,24 @@
   <div *ngIf="!!profile" class="wrap">
     <div class="header">
       <div class="avatar">
-        <ion-icon class="avatar" name="person-circle-outline"></ion-icon>
+        <img [src]="profile.avatarLink" alt="{{profile.username}}'s avatar">
       </div>
       <div class="profile-info">
         <strong class="username">{{profile.username}}</strong>
+        <hr>
         <span class="balance">Balance: <strong>{{profile.balance | currency}}</strong></span>
         <div class="games-amount">Games owned: <strong>{{profile.games.length}}</strong></div>
       </div>
     </div>
     <div class="body">
-
+      <div class="about-you">
+        <ion-item>
+          <ion-label position="floating">About</ion-label>
+          <ion-textarea [placeholder]="'Add something about you'" spellcheck="false" [maxlength]="512"
+            (ionChange)="profileChanged($event, 'about')" [value]="profile.about"></ion-textarea>
+        </ion-item>
+      </div>
+      <ion-button [disabled]="!isProfileChanged()" (click)="onSave()" class="save-button">Save</ion-button>
     </div>
   </div>
 </ion-content>

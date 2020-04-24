@@ -31,6 +31,15 @@ export class ApiService {
     });
   }
 
+  async patch<TReq, TRes>(endpoint: string, body?: TReq, customHeaders?): Promise<Observable<HttpResponse<TRes>>> {
+    const baseUrl = environment.apiBaseUrl;
+    const url = `${baseUrl}${endpoint}`;
+    return this.http.patch<TRes>(url, body, {
+      headers: await this.getHeaders(customHeaders),
+      observe: 'response',
+    });
+  }
+
   private async getHeaders(customHeaders?): Promise<HttpHeaders> {
     const headers = {
       'Content-Type': 'application/json',

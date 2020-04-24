@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BackendService } from '../services/api/backend.service';
 import { BehaviorSubject } from 'rxjs';
-import { ProfileResponse } from '../api-contracts/profile';
+import { Profile } from '../api-contracts/profile';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  readonly profile = new BehaviorSubject<ProfileResponse>(null);
+  readonly profile = new BehaviorSubject<Profile>(null);
   
   constructor(
     private backend: BackendService,
@@ -21,7 +21,7 @@ export class ProfileService {
     });
   }
 
-  setProfileData(profile: ProfileResponse) {
+  setProfileData(profile: Profile) {
     this.profile.next(profile);
   }
 }

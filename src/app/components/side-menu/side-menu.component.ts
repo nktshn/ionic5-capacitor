@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { SideMenuService } from './side-menu.service';
-import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { Profile } from 'src/app/api-contracts/profile';
 import { DeviceService } from 'src/app/services/device/device.service';
 
 
@@ -15,7 +15,7 @@ export class SideMenuComponent implements OnInit {
   readonly menuId = 'main';
   appVersion: string;
   
-  @Input() profile: ProfileResponse;
+  @Input() profile: Profile;
 
   get menuItems() {
     return this.sideMenuService.menuItems;

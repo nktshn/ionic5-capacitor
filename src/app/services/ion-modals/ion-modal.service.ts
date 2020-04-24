@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { GameBuyingModalComponent } from 'src/app/components/game-buying-modal/game-buying-modal.component';
 import { ModalController, ToastController } from '@ionic/angular';
 import { Game } from 'src/app/api-contracts/games';
-import { ProfileResponse } from 'src/app/api-contracts/profile';
+import { Profile } from 'src/app/api-contracts/profile';
 import { LoaderService } from '../loader/loader.service';
 import { BackendService } from '../api/backend.service';
 import { ProfileService } from 'src/app/stores/profile.service';
@@ -20,7 +20,7 @@ export class IonModalService {
     private profileService: ProfileService,
   ) { }
 
-  async showBuyGameModal(profile: ProfileResponse, targetGame: Game) {
+  async showBuyGameModal(profile: Profile, targetGame: Game) {
     // that ionic's modal api is awful...
     const modal = await this.modalCtrl.create({
       component: GameBuyingModalComponent,
