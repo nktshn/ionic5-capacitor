@@ -15,6 +15,6 @@ export class ToastService {
       message,
       duration,
     })
-    toast.present()
+    return toast.present()
   }
 }

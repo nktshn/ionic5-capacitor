@@ -18,7 +18,7 @@ export class GameBuyingModalComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-   
+    
   }
 
   onCancel(): void {
@@ -30,7 +30,7 @@ export class GameBuyingModalComponent implements OnInit {
   }
 
   getItemCoverNgStyle(item: IBuyable) {
-    return {'background-image': `url(${item.coverUrl})`}
+    return { 'background-image': `url(${item.coverUrl})` }
   }
 
   getTotalCost(): number {
@@ -39,13 +39,13 @@ export class GameBuyingModalComponent implements OnInit {
 
   calculateIsInsufficientFunds(): boolean {
     const balance = this.profile.balance;
-    const total =  this.getTotalCost();
+    const total = this.getTotalCost();
     return balance < total;
   }
 
   getDifferenceBetweenTotalAndBalance(): number {
     const balance = this.profile.balance;
-    const total =  this.getTotalCost();
+    const total = this.getTotalCost();
     return total - balance;
   }
 

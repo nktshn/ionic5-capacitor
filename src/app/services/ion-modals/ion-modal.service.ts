@@ -20,31 +20,31 @@ export class IonModalService {
     private profileService: ProfileService,
   ) { }
 
-  async showBuyGameModal(profile: Profile, targetGame: Game) {
+  async showBuyGameModal(profile: Profile, targetGame: Game): Promise<HTMLIonModalElement> {
     // that ionic's modal api is awful...
     const modal = await this.modalCtrl.create({
       component: GameBuyingModalComponent,
       componentProps: {
         itemsToBuy: [targetGame],
-        profile:  profile,
+        profile: profile,
       }
     });
     modal.present();
     const modalData = await modal.onWillDismiss();
     const isPurchaseConfirmed = modalData.data as boolean;
-    if (!isPurchaseConfirmed) {
-      return;
+    if (isPurchaseConfirmed) {
+      this.loaderService.showFullscreenLoader();
+      const sub = await (this.backend.buyGame(targetGame));
+      const toast = await this.toastCtrl.create({
+        message: `"${targetGame.title}" added to your Library`,
+        duration: 3000
+      })
+      sub.subscribe(profileResponse => {
+        this.profileService.setProfileData(profileResponse);
+        toast.present();
+        this.loaderService.hideFullscreenLoader();
+      })
     }
-    this.loaderService.showFullscreenLoader();
-    const sub = await (this.backend.buyGame(targetGame));
-    const toast = await this.toastCtrl.create({
-      message: `"${targetGame.title}" added to your Library`,
-      duration: 3000
-    })
-    sub.subscribe(profileResponse => {
-      this.profileService.setProfileData(profileResponse);
-      toast.present();
-      this.loaderService.hideFullscreenLoader();
-    })
+    return modal;
   }
 }

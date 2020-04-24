@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
 import { RoutingPaths } from 'src/app/routing-paths';
 import { IonModalService } from 'src/app/services/ion-modals/ion-modal.service';
 import { IonRefresher } from '@ionic/angular';
+import { DeviceService } from 'src/app/services/device/device.service';
+
 
 @Component({
   selector: 'app-main',
@@ -20,12 +22,15 @@ export class MainPage implements OnInit {
   storeGames: Game[] = [];
   profile: Profile;
 
+
+
   constructor(
     private gamesService: GamesService,
     private profileService: ProfileService,
     private loaderService: LoaderService,
     private router: Router,
     private ionModalService: IonModalService,
+    private deviceService: DeviceService,
   ) { }
 
   ngOnInit() {
@@ -36,12 +41,23 @@ export class MainPage implements OnInit {
   ngOnDestroy() {
   }
 
+  ionViewDidEnter() {
+    this.deviceService.registerBackButtonForAppExit();
+  }
+
+  ionViewDidLeave() {
+    this.deviceService.unregisterBackButtonForAppExit();
+  }
+  
   onBuyGame(gameId: number): void {
     const targetGame = this.storeGames.find(game => game.id === gameId);
     if (!targetGame) {
       throw new Error('onBuyGame -> no game found')
     }
-    this.ionModalService.showBuyGameModal(this.profile, targetGame);
+    this.deviceService.unregisterBackButtonForAppExit();
+    this.ionModalService.showBuyGameModal(this.profile, targetGame)
+      .then(modal => modal.onDidDismiss())
+      .then(_ => this.deviceService.registerBackButtonForAppExit());
   }
 
   goToGamePage(gameId: number) {
