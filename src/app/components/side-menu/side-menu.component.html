@@ -1,7 +1,10 @@
 <ion-menu side="end" menuId="{{menuId}}" contentId="main">
   <ion-header>
     <div *ngIf="profile" class="header-wrap">
-      <ion-icon class="avatar" name="person-circle-outline"></ion-icon>
+      <!-- <ion-icon class="avatar" name="person-circle-outline"></ion-icon> -->
+      <div class="avatar">
+        <img [src]="profile.avatarLink" alt="{{profile.username}}'s avatar">
+      </div>
       <div class="profile-data">
         <div class="username-wrap">
           <span>Welcome, </span>

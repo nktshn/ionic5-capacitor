@@ -21,9 +21,7 @@ export class MainPage implements OnInit {
 
   storeGames: Game[] = [];
   profile: Profile;
-
-
-
+  
   constructor(
     private gamesService: GamesService,
     private profileService: ProfileService,
