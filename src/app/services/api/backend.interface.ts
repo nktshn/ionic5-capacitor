@@ -10,4 +10,5 @@ export interface IBackendService {
     buyGame(game: Game): Promise<Observable<Profile>>;
     getGameById(id: number): Promise<Observable<Game>>;
     updateProfile(profile: Partial<Profile>): Promise<Observable<Profile>>;
+    logout(): Promise<Observable<number>>;
 }

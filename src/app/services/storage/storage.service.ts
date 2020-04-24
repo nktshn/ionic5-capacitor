@@ -28,6 +28,10 @@ export class StorageService {
   async setAuthData(data: AuthData): Promise<void> {
     return await this.storageApi.set(STORAGE_KEYS.AUTH_DATA, data);
   }
+
+  async removeAuthData(): Promise<void> {
+    return await this.storageApi.remove(STORAGE_KEYS.AUTH_DATA);
+  }
   
   async setProfile(profile: Profile): Promise<void> {
     return await this.storageApi.set(STORAGE_KEYS.PROFILE, profile);
@@ -35,6 +39,10 @@ export class StorageService {
 
   async getProfile(): Promise<Profile> {
     return await this.storageApi.get<Profile>(STORAGE_KEYS.PROFILE);
+  }
+
+  async removeProfile(): Promise<void> {
+    return await this.storageApi.remove(STORAGE_KEYS.PROFILE);
   }
 
 }

@@ -26,5 +26,11 @@ export class StorageApiService {
     return JSON.parse(value) as T;
   }
 
+  async remove(key: string) {
+    return await Storage.remove({
+      key,
+    })
+  }
+
 }
 

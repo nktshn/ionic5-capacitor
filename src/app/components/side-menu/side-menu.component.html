@@ -20,6 +20,10 @@
         <ion-icon [name]="item.ionIconName"></ion-icon>
         {{item.title}}
       </ion-item>
+      <ion-item (click)="forgetAccount()">
+        <ion-icon name="trash-outline"></ion-icon>
+        <span>Forget this account</span>
+      </ion-item>
     </ion-list>
     <div class="menu-subcontent">
       <div class="version">

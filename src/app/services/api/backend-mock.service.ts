@@ -100,4 +100,13 @@ export class BackendMockService implements IBackendService {
       delay(this.mockedApiDelay)
     )
   }
+
+  async logout() {
+    await this.storage.removeProfile();
+    await this.storage.removeAuthData();
+    return new Observable<number>(obs => {
+      obs.next();
+      obs.complete();
+    })
+  }
 }

@@ -11,11 +11,15 @@ export class Endpoints {
         return 'profile';
     }
 
-    static buyGame(id: number) {
-        return `buy/game/${id}`
+    static buyGame(id: number): string {
+        return `buy/game/${id}`;
     }
 
-    static gameById(id: number) {
-        return `game/${id}`
+    static gameById(id: number): string {
+        return `game/${id}`;
+    }
+
+    static logout(): string {
+        return `logout`;
     }
 }

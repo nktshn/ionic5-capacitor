@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { SideMenuService } from './side-menu.service';
 import { Profile } from 'src/app/api-contracts/profile';
 import { DeviceService } from 'src/app/services/device/device.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 
 @Component({
@@ -25,6 +26,7 @@ export class SideMenuComponent implements OnInit {
     private router: Router,
     private sideMenuService: SideMenuService,
     private deviceService:  DeviceService,
+    private authService: AuthService,
   ) { }
 
   ngOnInit() {
@@ -34,6 +36,10 @@ export class SideMenuComponent implements OnInit {
   navigateTo(link: string): void {
     this.router.navigateByUrl(link);
     this.sideMenuService.close(this.menuId);
+  }
+
+  forgetAccount() {
+    this.authService.logout();
   }
 
   async getAppVersion(): Promise<void> {

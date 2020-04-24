@@ -40,6 +40,15 @@ export class ApiService {
     });
   }
 
+  async head<TRes>(endpoint: string, customHeaders?): Promise<Observable<HttpResponse<TRes>>> {
+    const baseUrl = environment.apiBaseUrl;
+    const url = `${baseUrl}${endpoint}`;
+    return this.http.head<TRes>(url, {
+      headers: await this.getHeaders(customHeaders),
+      observe: 'response',
+    });
+  }
+
   private async getHeaders(customHeaders?): Promise<HttpHeaders> {
     const headers = {
       'Content-Type': 'application/json',

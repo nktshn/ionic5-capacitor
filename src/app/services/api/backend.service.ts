@@ -51,4 +51,10 @@ export class BackendService implements IBackendService {
       map(httpResponse => httpResponse.body)
     )
   }
+
+  async logout() {
+    return (await this.api.head<null>(Endpoints.logout())).pipe(
+      map(httpResponse => httpResponse.status)
+    )
+  }
 }
